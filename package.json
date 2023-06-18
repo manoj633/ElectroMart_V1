@@ -1,0 +1,23 @@
+{
+  "name": "electromart",
+  "version": "1.0.0",
+  "description": "eCommerce application built with MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manoj633/ElectroMart.git"
+  },
+  "author": "Manoj M",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manoj633/ElectroMart/issues"
+  },
+  "homepage": "https://github.com/manoj633/ElectroMart#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
