@@ -6,6 +6,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import store from "./store";
+
 /*
 commenting default bootstrap and index.css
 import "./index.css";
@@ -31,8 +35,14 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
+/*
+ * In the above code, the router is surrounded by provided with a redux store
+ * This redux store hourses data which can be used by all routes within the routerProvider
+ */
 
 reportWebVitals();
