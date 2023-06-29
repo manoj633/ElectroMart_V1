@@ -3,11 +3,11 @@ import asyncHandler from "./asyncHandler.js";
 import User from "../models/userModel.js";
 
 // Protect routes
-export const protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
   let token;
 
   // Read the JWT from the cookie
-  token = req.cookie.jwt;
+  token = req.cookies.jwt;
 
   if (token) {
     //JWT verify receives the token and the secret used to code the token and return the payload
@@ -26,3 +26,15 @@ export const protect = asyncHandler(async (req, res, next) => {
     throw new Error("Not Authorized");
   }
 });
+
+// Admin middleware
+const admin = (req, res, next) => {
+  if (req.user.name === "Admin" && req.user.isAdmin === true) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as admin");
+  }
+};
+
+export { protect, admin };
