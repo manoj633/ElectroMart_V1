@@ -5,3 +5,18 @@ const initialState = {
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null,
 };
+
+const authSlice = new createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    setCredentials: (state, action) => {
+      state.userInfo = action.payload;
+      localStorage.setItem("userInfo", JSON.parse(action.payload));
+    },
+  },
+});
+
+export const { setCredentials } = authSlice.actions;
+
+export default authSlice.reducer;
