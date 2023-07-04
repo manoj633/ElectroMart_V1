@@ -86,6 +86,7 @@ Technologies used in the project:
 - HTML5 and CSS3
 - Bootstrap
 - Axios
+- Toastify
 
 <h2>🛡️ License:</h2>
 
