@@ -38,7 +38,7 @@ npm install
 <p>3. Configure Environment Variables</p>
 
 ```
-In the project's root directory find the example.env file. Duplicate the file and rename it to .env  Open the .env file and provide the necessary configuration values such as database credentials JWT secret key PayPal API credentials etc.
+In the project's root directory find the example.env file. Duplicate the file and rename it to just .env  Open the .env file and provide the necessary configuration values such as database credentials JWT secret key PayPal API credentials etc.
 ```
 
 <p>4. Seed the data</p>
