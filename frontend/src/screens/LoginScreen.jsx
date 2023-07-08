@@ -29,15 +29,14 @@ const LoginScreen = () => {
   }, [userInfo, redirect, navigate]);
 
   const submitHandler = async (e) => {
-    console.log("entered");
     e.preventDefault();
     try {
       //login with BE
       const res = await login({ email, password }).unwrap();
-      console.log(res);
+
       //dispatch setCredentials for local store user data
       dispatch(setCredentials({ ...res }));
-      console.log("loggedIn");
+
       navigate(redirect);
     } catch (error) {
       toast.error(error?.data?.message || error.error);

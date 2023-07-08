@@ -31,7 +31,6 @@ const RegisterScreen = () => {
   }, [userInfo, redirect, navigate]);
 
   const submitHandler = async (e) => {
-    console.log("entered");
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error("Password do not match");
@@ -40,10 +39,10 @@ const RegisterScreen = () => {
       try {
         //login with BE
         const res = await register({ name, email, password }).unwrap();
-        console.log(res);
+
         //dispatch setCredentials for local store user data
         dispatch(setCredentials({ ...res }));
-        console.log("loggedIn");
+
         navigate(redirect);
       } catch (error) {
         toast.error(error?.data?.message || error.error);
