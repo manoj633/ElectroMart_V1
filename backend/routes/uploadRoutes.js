@@ -16,15 +16,26 @@ const storage = multer.diskStorage({
   },
 });
 
-function checkFileTypee(file, cb) {
+function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const minetype = filetypes.test(file.minetype);
+  const minetype = filetypes.test(file.mimetype);
   if (extname && minetype) {
     return cb(null, true);
   } else {
     cb("Images only!");
   }
 }
+
+const upload = multer({
+  storage,
+});
+
+router.post("/", upload.single("image"), (req, res) => {
+  res.send({
+    message: "Image uploaded",
+    image: `/${req.file.path}`,
+  });
+});
 
 export default router;
