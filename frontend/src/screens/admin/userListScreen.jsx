@@ -14,7 +14,6 @@ const UserListScreen = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
 
   const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
-  const createUserHandler = () => {};
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure?")) {
@@ -33,11 +32,6 @@ const UserListScreen = () => {
       <Row className="align-items-center">
         <Col>
           <h1>Users</h1>
-        </Col>
-        <Col className="text-end">
-          <Button className="btn-sm m-3" onClick={createUserHandler}>
-            <FaEdit /> Create User
-          </Button>
         </Col>
       </Row>
       {/* {loadingCreate && <Loader />} */}
