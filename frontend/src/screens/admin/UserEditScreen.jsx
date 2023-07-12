@@ -69,7 +69,6 @@ const UserEditScreen = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter name"
-                disabled={name === "Admin"}
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
