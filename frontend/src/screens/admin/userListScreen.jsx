@@ -4,16 +4,28 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaTrash, FaTimes, FaCheck } from "react-icons/fa";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import { useGetUsersQuery } from "../../slices/usersApiSlice";
+import {
+  useGetUsersQuery,
+  useDeleteUserMutation,
+} from "../../slices/usersApiSlice";
 import { toast } from "react-toastify";
 
 const UserListScreen = () => {
-  const { data: users, isLoading, error, refetch } = useGetUsersQuery();
+  const { data: users, refetch, isLoading, error } = useGetUsersQuery();
 
+  const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
   const createUserHandler = () => {};
 
-  const deleteHandler = (id) => {
-    console.log(id);
+  const deleteHandler = async (id) => {
+    if (window.confirm("Are you sure?")) {
+      try {
+        await deleteUser(id);
+        refetch();
+        toast.success("Deleted successfully");
+      } catch (err) {
+        toast.error(err?.data?.message || err?.error);
+      }
+    }
   };
 
   return (
@@ -28,8 +40,8 @@ const UserListScreen = () => {
           </Button>
         </Col>
       </Row>
-      {/* {loadingCreate && <Loader />}
-      {loadingDelete && <Loader />} */}
+      {/* {loadingCreate && <Loader />} */}
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
