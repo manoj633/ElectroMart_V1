@@ -40,7 +40,7 @@ const UserEditScreen = () => {
     e.preventDefault();
 
     try {
-      const res = updateUser({ userId, name, email, isAdmin });
+      updateUser({ userId, name, email, isAdmin });
       refetch();
       toast.success("User updated successfully");
       navigate("/admin/userlist");

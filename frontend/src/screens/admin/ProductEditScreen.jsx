@@ -32,7 +32,7 @@ const ProductEditScreen = () => {
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
 
-  const [uploadProductImage, { isLoading: loadingUpoad }] =
+  const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation();
 
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ const ProductEditScreen = () => {
       description,
     };
     try {
-      const res = updateProduct(updatedProduct);
+      updateProduct(updatedProduct);
       refetch();
       toast.success("Product updated successfully");
       navigate("/admin/productlist");
@@ -92,7 +92,7 @@ const ProductEditScreen = () => {
       <FormContainer>
         <h1>Edit Product</h1>
         {loadingUpdate && <Loader />}
-
+        {loadingUpload && <Loader />}
         {isLoading ? (
           <Loader />
         ) : error ? (
