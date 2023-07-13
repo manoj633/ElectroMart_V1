@@ -5,11 +5,19 @@ import Product from "../models/productModel.js";
 //@route    /api/products
 //@access   Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 4;
+  const pageSize = 1;
   const page = Number(req.query.pageNumber) || 1;
 
-  const count = await Product.countDocuments(); //gives total number of products
-  const products = await Product.find({})
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: "i" } }
+    : {};
+  // creating a regex expression of passed keyword
+  // options i makes the regex case insesnitive
+
+  const count = await Product.countDocuments({ ...keyword }); //gives total number of products
+  //keyword is the regex and count will contain count of matching products with the keyword
+
+  const products = await Product.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
   //limit -> returns specified amount of document per page
