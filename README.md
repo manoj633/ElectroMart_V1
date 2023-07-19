@@ -4,7 +4,7 @@
 
 <p id="description">The MERN Stack E-commerce Application for Electronic Goods is a robust and scalable web application that aims to provide users with a seamless online shopping experience for electronic products. This application leverages the power of the MERN (MongoDB Express.js React.js and Node.js) stack to ensure efficient and dynamic handling of data and interactions.</p>
 
-<p align="center"><img src="https://img.shields.io/github/commit-activity/t/manoj633/electromart" alt="shields">&nbsp;&nbsp;<img src="https://img.shields.io/github/languages/count/manoj633/electromart" alt="shields"></p>
+<p align="center"><img src="https://img.shields.io/github/commit-activity/t/manoj633/ElectroMart_V1" alt="shields">&nbsp;&nbsp;<img src="https://img.shields.io/github/languages/count/manoj633/ElectroMart_V1" alt="shields"></p>
 
 <br/><br/>
 
