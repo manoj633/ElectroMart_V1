@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/manoj633/ElectroMart#readme",
   "dependencies": {
+    "@novu/notification-center": "^0.16.4",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",

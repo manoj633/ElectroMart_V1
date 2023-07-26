@@ -3,7 +3,12 @@ export const addDecimal = (num) => {
 };
 
 export const updateCart = (state) => {
-  //calculate Item price
+  // Constants
+  const FREE_SHIPPING_THRESHOLD = 100;
+  const STANDARD_SHIPPING_PRICE = 10;
+  const TAX_RATE = 0.15;
+
+  // Calculate Item price
   state.itemsPrice = addDecimal(
     state.cartItems.reduce(
       (accumulator, item) => accumulator + item.price * item.qty,
@@ -11,16 +16,17 @@ export const updateCart = (state) => {
     )
   );
 
-  //calculate shipping price
-  //If Items price is greater than $100, then shipping price is $0
-  //otherwise shipping price is $10
-  state.shippingPrice = addDecimal(state.itemsPrice > 100 ? 0 : 10);
-  //tax price (tax 15%)
-  state.taxPrice = addDecimal(
-    addDecimal(Number(0.15 * state.itemsPrice).toFixed(2))
+  // Calculate shipping price
+  state.shippingPrice = addDecimal(
+    state.itemsPrice > FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_PRICE
   );
 
-  //Total price
+  // Calculate tax price
+  state.taxPrice = addDecimal(
+    addDecimal(Number(TAX_RATE * state.itemsPrice).toFixed(2))
+  );
+
+  // Calculate total price
   state.totalPrice = addDecimal(
     (
       Number(state.itemsPrice) +
